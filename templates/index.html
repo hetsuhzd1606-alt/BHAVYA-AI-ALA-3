@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>ChatBuddy 🤖</title>
-    <!-- Link to external CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -11,7 +10,7 @@
         <h2>ChatBuddy 🤖</h2>
         <div id="chat-box"></div>
         <div class="input-area">
-            <input type="text" id="user-input" placeholder="Type your message here..." />
+            <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
             <button id="send-btn">Send</button>
         </div>
     </div>
@@ -29,18 +28,20 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        sendBtn.onclick = () => {
-            const msg = userInput.value;
-            if(msg.trim() === "") return;
+        function sendMessage() {
+            const msg = userInput.value.trim();
+            if (!msg) return;
             addMessage("user", msg);
             fetch(`/get?msg=${encodeURIComponent(msg)}`)
-                .then(response => response.text())
-                .then(data => addMessage("bot", data));
+                .then(res => res.text())
+                .then(data => addMessage("bot", data))
+                .catch(() => addMessage("bot", "⚠️ Error connecting to server."));
             userInput.value = "";
         }
 
-        userInput.addEventListener("keyup", function(event) {
-            if(event.key === "Enter") sendBtn.click();
+        sendBtn.onclick = sendMessage;
+        userInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
         });
     </script>
 </body>
