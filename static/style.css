@@ -1,0 +1,119 @@
+/* --- General body --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* --- Chat container --- */
+.chat-container {
+    width: 400px;
+    max-width: 95%;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* --- Chat header --- */
+.chat-container h2 {
+    margin: 0;
+    padding: 20px;
+    background: #4a90e2;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* --- Chat box --- */
+#chat-box {
+    flex: 1;
+    padding: 20px;
+    background: #eef2f7;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- Messages --- */
+.user, .bot {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+}
+
+.user {
+    align-self: flex-end;
+    background: #4a90e2;
+    color: white;
+}
+
+.bot {
+    align-self: flex-start;
+    background: #e0e0e0;
+    color: #333333;
+}
+
+/* --- Input area --- */
+.input-area {
+    display: flex;
+    padding: 15px;
+    background: #f1f3f6;
+    border-top: 1px solid #ddd;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+#user-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74,144,226,0.5);
+}
+
+#send-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #4a90e2;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+#send-btn:hover {
+    background: #357ABD;
+}
+
+/* --- Scrollbar styling --- */
+#chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: transparent;
+}
